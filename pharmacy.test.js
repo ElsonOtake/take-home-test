@@ -71,3 +71,21 @@ describe("Fervex", () => {
     ).toEqual([new Drug("Fervex", 9, 50)]);
   });
 });
+
+describe("Dafalgan", () => {
+  it("should decrease the benefit twice and decrease expiresIn", () => {
+    expect(
+      new Pharmacy([new Drug("Dafalgan", 2, 5)]).updateBenefitValue()
+    ).toEqual([new Drug("Dafalgan", 1, 3)]);
+  });
+  it("should decrease the benefit twice as fast after expiration date", () => {
+    expect(
+      new Pharmacy([new Drug("Dafalgan", 0, 20)]).updateBenefitValue()
+    ).toEqual([new Drug("Dafalgan", -1, 16)]);
+  });
+  it("should not have benefit with negative value", () => {
+    expect(
+      new Pharmacy([new Drug("Dafalgan", 10, 1)]).updateBenefitValue()
+    ).toEqual([new Drug("Dafalgan", 9, 0)]);
+  });
+});
