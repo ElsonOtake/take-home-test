@@ -17,3 +17,21 @@ describe("Pharmacy", () => {
     ).toEqual([new Drug("test", 9, 0)]);
   });
 });
+
+describe("Herbal Tea", () => {
+  it("should decrease the expiresIn and increase the benefit", () => {
+    expect(
+      new Pharmacy([new Drug("Herbal Tea", 2, 3)]).updateBenefitValue()
+    ).toEqual([new Drug("Herbal Tea", 1, 4)]);
+  });
+  it("should decrease the expiresIn and increase the benefit twice after expiration date", () => {
+    expect(
+      new Pharmacy([new Drug("Herbal Tea", 0, 3)]).updateBenefitValue()
+    ).toEqual([new Drug("Herbal Tea", -1, 5)]);
+  });
+  it("should decrease the expiresIn and increase the benefit to maximum value of 50", () => {
+    expect(
+      new Pharmacy([new Drug("Herbal Tea", 10, 50)]).updateBenefitValue()
+    ).toEqual([new Drug("Herbal Tea", 9, 50)]);
+  });
+});
