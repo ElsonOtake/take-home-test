@@ -11,4 +11,9 @@ describe("Pharmacy", () => {
       new Pharmacy([new Drug("test", 0, 3)]).updateBenefitValue()
     ).toEqual([new Drug("test", -1, 1)]);
   });
+  it("should not have benefit with negative value", () => {
+    expect(
+      new Pharmacy([new Drug("test", 10, 0)]).updateBenefitValue()
+    ).toEqual([new Drug("test", 9, 0)]);
+  });
 });
