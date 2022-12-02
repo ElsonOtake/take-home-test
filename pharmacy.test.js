@@ -34,4 +34,12 @@ describe("Herbal Tea", () => {
       new Pharmacy([new Drug("Herbal Tea", 10, 50)]).updateBenefitValue()
     ).toEqual([new Drug("Herbal Tea", 9, 50)]);
   });
+
+  describe("Magic Pill", () => {
+    it("should never expire nor decrease the benefit", () => {
+      expect(
+        new Pharmacy([new Drug("Magic Pill", 2, 3)]).updateBenefitValue()
+      ).toEqual([new Drug("Magic Pill", 2, 3)]);
+    });
+  });
 });
